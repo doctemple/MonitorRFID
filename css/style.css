@@ -1,0 +1,173 @@
+/* บาร์ ด้านบน */
+.topbar {
+  font-size: 14rem;
+}
+/* เฉพาะ โมดูล โค๊ด */
+.module {
+  font-size: 16rem !important;
+}
+
+.secordbar .nav-item { 
+  margin-left:2rem;
+  font-size: 10rem;
+ }
+
+/* ขนาด ตัวอักษร บ๊อกด้านซ้าย */
+.display-1 {
+  font-size: 20rem;
+}
+
+.display-2 {
+  font-size: 10rem;
+}
+
+/* บ๊อกด้านซ้าย */
+.getBox{
+  border:0;
+  padding:0rem 0 0rem 0;
+  }
+/* ขนาด ตัวอักษร  ตาราง */
+#content-tags { font-size: 10rem;}
+#content_ngs { font-size: 10rem;}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+  position: relative;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  top: 15px;
+  right: 35px;
+  }
+}
+
+
+html,
+body {
+  font-family: Consolas, monaco, monospace;
+  font-size: 0.4rem;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  background-color:#000000;
+  height: 99%;
+  overflow:hidden;
+
+}
+.text-digital{
+  font-family: Consolas;
+}
+
+
+
+.card{
+  margin-bottom: 1rem;
+}
+
+.topbar{
+padding:0px 6px;
+text-align:center;
+vertical-align: middle;
+}
+
+.today{
+  text-align: center;
+  margin-right:0.2rem;
+}
+
+.subject{
+
+font-weight:blod;
+}
+
+.text{
+font-weight:blod;
+}
+
+.modal {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+
+.modal-content {
+  position: relative;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.icon{
+  width:13rem;
+  height:13rem;
+  border-radius: 50%;
+  display: inline-block;  
+  font-size:7rem;
+  margin-left: 3rem;
+  margin-top:4.4rem;
+}
+
+.rfid{
+
+}
+
+.card-head{ padding: 1rem;}
+
+#skipcode {
+  outline: none !important;
+  border:0 !important;
+  box-shadow: none;
+  color:#FFFF00;
+  cursor: crosshair;
+}
+
+#skipcode:focus {
+  outline: none !important;
+  border:0 !important;
+  box-shadow: none;
+}
+
+.circle{
+  border-radius: 50%;
+  display: inline-block;
+}
