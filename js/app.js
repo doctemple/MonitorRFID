@@ -2,7 +2,7 @@ var app = angular.module("myApp", []);
 
 app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
   // Mode
-  $scope.live = 'phet';  // bpk , phet, local
+  $scope.live = 'local';  // bpk , phet, local
 
   // API URL
   if($scope.live=='bpk'){
@@ -25,8 +25,8 @@ app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
     
   if($scope.live=='local'){
       // For Test
-		  $scope.server_api_ip = "localhost:88";
-		  $scope.rootPart = "watRFID/api";
+		  $scope.server_api_ip = "localhost:5500";
+		  $scope.rootPart = "api";
 		  $scope.suffix = ".json";
 	  }
 
@@ -216,7 +216,7 @@ $scope.playAudioComplete = function() {
       $scope.sniff_status = response.data['Status'];
   });
 
-  $scope.url_skip_number = $scope.serverPath + "skips?moduleno="+$scope.module_code;
+  $scope.url_skip_number = $scope.serverPath + "skips"+$scope.suffix+"?moduleno="+$scope.module_code;
     
   $http.get($scope.url_skip_number).then(function (response) {
     $scope.skip_number = response.data;

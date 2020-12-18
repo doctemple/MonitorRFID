@@ -175,3 +175,7 @@ font-weight:blod;
   border-radius: 50%;
   display: inline-block;
 }
+
+.leftbox {
+  height: calc(100%/3) !important;
+}
