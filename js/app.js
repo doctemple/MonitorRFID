@@ -12,11 +12,17 @@ app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
 	  }  
 
   if($scope.live=='phet'){
-      $scope.server_api_ip = "192.168.20.187";
+      $scope.server_api_ip = "192.168.20.109";
       $scope.rootPart = "rfid/api";
       $scope.suffix = "";
 	  }  
 
+    if($scope.live=='fome'){
+      $scope.server_api_ip = "192.168.20.187";
+      $scope.rootPart = "rfid/api";
+      $scope.suffix = "";
+    }  
+    
   if($scope.live=='local'){
       // For Test
 		  $scope.server_api_ip = "localhost:88";
@@ -159,9 +165,7 @@ $scope.playAudioComplete = function() {
           $http.post($scope.api_complete,data).then(function (response) {
             var ups = response.data;
             if(ups.upStatus==1){
-              $scope.nstatus = 'bg-success';
-              $scope.nfa = 'fa-check ';
-              $scope.Notify('Module : '+$scope.module_code+' is complete.');
+              $scope.NotifySuccess('Module : '+$scope.module_code+' is complete.');
               $scope.playAudioComplete();
             }else if(ups.upStatus==2){
               /*
@@ -171,9 +175,7 @@ $scope.playAudioComplete = function() {
               */
               
             }else if(ups.upStatus==3){
-              $scope.nstatus = 'bg-danger';
-              $scope.nfa = 'fa-warning ';
-              $scope.Notify('Database Server Connection Failed.');
+              $scope.NotifyDanger('Database Server Connection Failed.');
               
             }
 
@@ -225,8 +227,7 @@ $scope.playAudioComplete = function() {
   // ปลดล็อกทั้งหมด
   $scope.unlockAll = function (data) {
     if (data != "") {
-      $scope.nstatus = 'bg-success'; 
-      $scope.Notify('Clear Data...');
+      $scope.NotifySuccess('Clear Data...');
       var size = $scope.tags_ngs.length;
       for (i = 0; i < size; i++) {
         var item = $scope.tags_ngs[i];
@@ -245,9 +246,9 @@ $scope.playAudioComplete = function() {
         $http.delete(delurl).then(function (response) {
           //console.log(response);
           if (response.statusText == "OK") {
-            $scope.Notify('Delete '+LabelNo+' is success.');
+            $scope.NotifySuccess('Delete '+LabelNo+' is success.');
           }else{
-            $scope.Notify('Canot Delete '+LabelNo+'.');
+            $scope.NotifyDanger('Canot Delete '+LabelNo+'.');
           }
         });
 
