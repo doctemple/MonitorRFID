@@ -12,7 +12,7 @@ app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
 	  }  
 
   if($scope.live=='phet'){
-      $scope.server_api_ip = "192.168.20.99";
+      $scope.server_api_ip = "192.168.20.187";
       $scope.rootPart = "rfid/api";
       $scope.suffix = "";
 	  }  
@@ -67,7 +67,31 @@ app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
     $scope.today = new Date();
   }, 1000);
 
-  $scope.Notify = function(text){
+  $scope.NotifySuccess = function(text){
+    $scope.nstatus = 'bg-success text-dark';
+    $scope.nfa = 'fa-retweet ';
+    $scope.message = 1;
+    $scope.messages = text;
+    $timeout(function(){
+      $scope.message = 0;
+      $scope.messages = '';
+    }, 3000);
+  }
+
+  $scope.NotifyWarning = function(text){
+    $scope.nstatus = 'bg-warning text-dark';
+    $scope.nfa = 'fa-retweet ';
+    $scope.message = 1;
+    $scope.messages = text;
+    $timeout(function(){
+      $scope.message = 0;
+      $scope.messages = '';
+    }, 3000);
+  }
+
+  $scope.NotifyDanger = function(text){
+    $scope.nstatus = 'bg-danger text-dark';
+    $scope.nfa = 'fa-retweet ';
     $scope.message = 1;
     $scope.messages = text;
     $timeout(function(){
@@ -250,35 +274,26 @@ $scope.playAudioComplete = function() {
   // ข้ามไปก่อน
   $scope.ModuleSkip = function () {
     var skipcode = document.getElementById("skipcode").value;
-
+debugger;
 
     if(skipcode==='skip'){
 
- 
+ debugger;
       $http.get($scope.url_skip+"?pwd=skip").then(function (response) {
         var skipdata = response.data;
 
         if (skipdata.skipStatus == 1) {
-            $scope.nstatus = 'bg-warning text-dark';
-            $scope.nfa = 'fa-retweet ';
-            $scope.Notify('Skip Module : '+mc);
-        }
-        
-        if (!skipdata || skipdata.skipStatus == 0) {
-          $scope.nstatus = 'bg-danger text-dark';
-          $scope.nfa = 'fa-retweet ';
-          $scope.Notify('Please try again !');
+            $scope.NotifySuccess('Skip Module : '+mc);
+        }else{
+            $scope.NotifyWarning('Please try again !');
         }
         
       });  
 
 
-    }
-    
-    if(skipcode!=='skip'){
-      $scope.nstatus = 'bg-danger text-dark';
-      $scope.nfa = 'fa-retweet ';
-      $scope.Notify('Password is incorrect ! ');
+    } else {
+       $scope.NotifyDanger('Barcode is incorrect ! ');
+       debugger;
     }
 
 
