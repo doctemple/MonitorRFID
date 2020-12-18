@@ -2,7 +2,7 @@ var app = angular.module("myApp", []);
 
 app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
   // Mode
-  $scope.live = 'phet';  // bpk , phet, local
+  $scope.live = 'local';  // bpk , phet, local
 
   // API URL
   if($scope.live=='bpk'){
@@ -67,6 +67,7 @@ app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
   $scope.nstatus = 'bg-secondary';
   $scope.nfa = '';
   $scope.mccolor ='warning';
+  $scope.skipcode = '555';
 
   // นาฬิกา
   $interval(function () {
@@ -134,6 +135,7 @@ $scope.playAudioComplete = function() {
         $scope.module_code = $scope.rfid_tags.ModuleNo;
         $scope.tag_total = $scope.rfid_tags.TotalQty;
         $scope.tag_read = $scope.rfid_tags.ReadQty;
+        $scope.tag_skipqty = $scope.rfid_tags.SkipQty;        
         $scope.tag_remain = $scope.rfid_tags.RemainQty;
         $scope.tag_ng = $scope.rfid_tags.NgQty;
         $scope.tag_skip = $scope.rfid_tags.Skip;
@@ -215,11 +217,6 @@ $scope.playAudioComplete = function() {
       $scope.sniff_status = response.data['Status'];
   });
 
-  $scope.url_skip_number = $scope.serverPath + "skips"+$scope.suffix+"?moduleno="+$scope.module_code;
-    
-  $http.get($scope.url_skip_number).then(function (response) {
-    $scope.skip_number = response.data;
-  });
 
   }, $scope.startInterval);
 
@@ -273,7 +270,8 @@ $scope.playAudioComplete = function() {
 
   // ข้ามไปก่อน
   $scope.ModuleSkip = function () {
-    var skipcode = document.getElementById("skipcode").value;
+    var skipcode = $scope.skipcode;
+
 debugger;
 
     if(skipcode==='skip'){
