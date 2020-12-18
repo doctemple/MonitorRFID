@@ -2,7 +2,7 @@ var app = angular.module("myApp", []);
 
 app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
   // Mode
-  $scope.live = 'local';  // bpk , phet, local
+  $scope.live = 'phet';  // bpk , phet, local
 
   // API URL
   if($scope.live=='bpk'){
@@ -81,7 +81,7 @@ app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
     $timeout(function(){
       $scope.message = 0;
       $scope.messages = '';
-    }, 3000);
+    }, 5000);
   }
 
   $scope.NotifyWarning = function(text){
@@ -92,7 +92,7 @@ app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
     $timeout(function(){
       $scope.message = 0;
       $scope.messages = '';
-    }, 3000);
+    }, 5000);
   }
 
   $scope.NotifyDanger = function(text){
@@ -103,7 +103,7 @@ app.controller("myCtrl", function ($scope, $http, $interval,$timeout,$window) {
     $timeout(function(){
       $scope.message = 0;
       $scope.messages = '';
-    }, 3000);
+    }, 5000);
   }
 
 $scope.mcc = 0;
@@ -112,17 +112,17 @@ $scope.skipcode = "";
 
   $scope.playAudioYes = function() {
     var audio = document.getElementById('AudioYes');
-    audio.play();
+    try { audio.play(); } catch(e){ }
 };
 
 $scope.playAudioNo = function() {
-  var audio = document.getElementById('AudioNo');
-  audio.play();
+    var audio = document.getElementById('AudioNo');
+    try { audio.play(); } catch(e){ }
 };
 
 $scope.playAudioComplete = function() {
-  var audio = document.getElementById('AudioComplete');
-  audio.play();
+    var audio = document.getElementById('AudioComplete');
+    try { audio.play(); } catch(e){ }
 };
 
   // ดึงข้อมูลระบบ
@@ -176,7 +176,6 @@ $scope.playAudioComplete = function() {
               
             }else if(ups.upStatus==3){
               $scope.NotifyDanger('Database Server Connection Failed.');
-              
             }
 
           });

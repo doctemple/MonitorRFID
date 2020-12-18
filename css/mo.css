@@ -1,3 +1,7 @@
+html,body {
+  height:100%;
+}
+
 /* บาร์ ด้านบน */
 .topbar {
   font-size: 14rem;
@@ -177,5 +181,7 @@ font-weight:blod;
 }
 
 .leftbox {
-  height: calc(100%/3) !important;
+  height: -moz-calc(100% - (100px + 150px));
+  height: -webkit-calc(100% - (100px + 150px));
+  height: calc(100% - (100px + 150px));
 }
