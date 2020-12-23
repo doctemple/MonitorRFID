@@ -22,10 +22,15 @@
   <script ng-If="tag_ng==0" >
     setInterval(function(){ 
       var skipc = $("#skipcode");
-          skipc.val('');    
           skipc.focus();
 
        }, 5000);
+
+       setInterval(function(){ 
+      var skipccc = $("#skipcode");
+          skipccc.val('');
+       }, 7000);
+
 </script>
 
 <script ng-If="tag_ng>0" >
@@ -167,8 +172,7 @@
       </li>
     </ul>
 
-    <input id="skipcode"  autocomplete="false" ng-keypress="ModuleSkip()" Quark
-     type="text" class="float-right btn" style=" background-color: rgb(73, 73, 73);  border:0; font-size: 3rem; width:80px;"   >
+    <input id="skipcode" ng-model="skipcode" autocomplete="false" ng-enter="ModuleSkip(skipcode)" type="text" class="float-right btn" value="{{skipcode}}" style=" background-color: rgb(73, 73, 73);  border:0; font-size: 3rem; width:80px;"   >
 
   </div>
 

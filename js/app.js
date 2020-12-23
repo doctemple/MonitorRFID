@@ -269,19 +269,15 @@ $scope.playAudioComplete = function() {
 
 
   // ข้ามไปก่อน
-  $scope.ModuleSkip = function () {
-    var skipcode = $scope.skipcode;
+  $scope.ModuleSkip = function (text) {
+    if(text!=''){
+    if(text==='skip'){
 
-debugger;
-
-    if(skipcode==='skip'){
-
- debugger;
       $http.get($scope.url_skip+"?pwd=skip").then(function (response) {
         var skipdata = response.data;
 
         if (skipdata.skipStatus == 1) {
-            $scope.NotifySuccess('Skip Module : '+mc);
+            $scope.NotifySuccess('Skip Module Success');
         }else{
             $scope.NotifyWarning('Please try again !');
         }
@@ -291,13 +287,28 @@ debugger;
 
     } else {
        $scope.NotifyDanger('Barcode is incorrect ! ');
-       debugger;
     }
 
+    $scope.skipcode='';
+  }
 
 
   };
  
 
 
+})
+.directive('ngEnter', function() {
+  return function(scope, elem, attrs) {
+    elem.bind("keypress", function(event) {
+      if (event.which === 13) {
+        scope.$apply(function() {
+          scope.$eval(attrs.ngEnter);
+        });
+
+        event.preventDefault();
+      }
+    });
+  };
 });
+
